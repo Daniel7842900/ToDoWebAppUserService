@@ -5,6 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Author: Daniel Lim
+ *
+ * Class for a signup request.
+ * First name, last name, email and password are needed for the signup.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

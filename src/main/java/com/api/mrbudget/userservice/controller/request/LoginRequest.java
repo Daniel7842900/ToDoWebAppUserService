@@ -5,6 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Author: Daniel Lim
+ *
+ * Class for a login request.
+ * Email and password are needed for the login.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
