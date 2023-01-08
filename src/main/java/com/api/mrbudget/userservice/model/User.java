@@ -2,14 +2,16 @@ package com.api.mrbudget.userservice.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name="user")
 @Getter
 @Setter
+@Accessors(chain = true)
 public class User {
 
     @Id

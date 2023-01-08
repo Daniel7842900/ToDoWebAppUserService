@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.dto.model.mapper;
+package com.api.mrbudget.userservice.dto.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * Author: Daniel Lim
@@ -14,6 +15,7 @@ import lombok.ToString;
  */
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)

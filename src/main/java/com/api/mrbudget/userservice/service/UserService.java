@@ -1,6 +1,6 @@
 package com.api.mrbudget.userservice.service;
 
-import com.api.mrbudget.userservice.dto.model.mapper.UserDto;
+import com.api.mrbudget.userservice.dto.model.UserDto;
 
 /**
  * Author: Daniel Lim
@@ -8,6 +8,7 @@ import com.api.mrbudget.userservice.dto.model.mapper.UserDto;
  * UserService interface
  */
 public interface UserService {
+
 
     /**
      * Register a user
