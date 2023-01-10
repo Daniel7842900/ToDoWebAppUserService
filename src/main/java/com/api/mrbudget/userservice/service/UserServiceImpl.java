@@ -9,6 +9,7 @@ import com.api.mrbudget.userservice.model.User;
 import com.api.mrbudget.userservice.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import static com.api.mrbudget.userservice.exception.EntityType.USER;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserException userException;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     /**
      * Handles the signup request.
      * Checks whether the user already exists.
@@ -49,7 +53,7 @@ public class UserServiceImpl implements UserService {
                     .setFirstName(userDto.getFirstName())
                     .setLastName(userDto.getLastName())
                     .setEmail(userDto.getEmail())
-                    .setPassword(userDto.getPassword());
+                    .setPassword(passwordEncoder.encode(userDto.getPassword()));
 
             return UserMapper.toUserDto(userRepository.save(user));
         }
