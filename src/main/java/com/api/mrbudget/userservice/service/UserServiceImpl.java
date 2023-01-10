@@ -7,6 +7,7 @@ import  com.api.mrbudget.userservice.exception.EntityType;
 import  com.api.mrbudget.userservice.exception.ExceptionType;
 import com.api.mrbudget.userservice.model.User;
 import com.api.mrbudget.userservice.repository.UserRepository;
+import com.api.mrbudget.userservice.security.JwtUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     /**
      * Handles the signup request.
