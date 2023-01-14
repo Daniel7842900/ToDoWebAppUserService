@@ -12,9 +12,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 import static com.api.mrbudget.userservice.exception.EntityType.USER;
 import static com.api.mrbudget.userservice.exception.ExceptionType.DUPLICATE_ENTITY;
+import static com.api.mrbudget.userservice.exception.ExceptionType.ENTITY_NOT_FOUND;
 
 
 /**
@@ -63,7 +67,22 @@ public class UserServiceImpl implements UserService {
         }
 
         throw exception(USER, DUPLICATE_ENTITY, userDto.getEmail());
+    }
 
+    /**
+     * Handles requests finding a user by email.
+     *
+     * @param email
+     * @return UserDto
+     */
+    @Transactional
+    public UserDto findByEmail(String email) {
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
+
+        // Converts a user object to a userDto object
+        if(user.isPresent()) return modelMapper.map(user.get(), UserDto.class);
+
+        throw exception(USER, ENTITY_NOT_FOUND, email);
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {

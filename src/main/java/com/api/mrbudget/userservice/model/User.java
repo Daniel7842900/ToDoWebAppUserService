@@ -20,7 +20,6 @@ import java.util.Date;
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

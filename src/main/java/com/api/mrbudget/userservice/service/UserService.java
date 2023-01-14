@@ -1,13 +1,14 @@
 package com.api.mrbudget.userservice.service;
 
 import com.api.mrbudget.userservice.dto.model.UserDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * Author: Daniel Lim
  *
  * UserService interface
  */
-public interface UserService {
+public interface UserService  {
 
 
     /**
@@ -17,4 +18,8 @@ public interface UserService {
      * @return
      */
     UserDto signup(UserDto userDto);
+
+    UserDto findByEmail(String email);
+
+//    String
 }

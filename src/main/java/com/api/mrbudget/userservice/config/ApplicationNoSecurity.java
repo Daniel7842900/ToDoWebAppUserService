@@ -8,12 +8,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * Configuration class for disabling Spring Security.
  * This is the purpose of the development.
  */
-@Configuration
-public class ApplicationNoSecurity {
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-                .antMatchers("/**");
-    }
-}
+//@Configuration
+//public class ApplicationNoSecurity {
+//
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring()
+//                .antMatchers("/**");
+//    }
+//}
