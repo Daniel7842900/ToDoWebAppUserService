@@ -2,14 +2,20 @@ package com.api.mrbudget.userservice.service;
 
 import com.api.mrbudget.userservice.dto.mapper.UserMapper;
 import com.api.mrbudget.userservice.dto.model.UserDto;
+import com.api.mrbudget.userservice.dto.response.JwtResponse;
 import com.api.mrbudget.userservice.exception.UserException;
 import  com.api.mrbudget.userservice.exception.EntityType;
 import  com.api.mrbudget.userservice.exception.ExceptionType;
 import com.api.mrbudget.userservice.model.User;
 import com.api.mrbudget.userservice.repository.UserRepository;
 import com.api.mrbudget.userservice.security.JwtUtil;
+import com.api.mrbudget.userservice.security.UserDetailsImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +48,9 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private JwtUtil jwtUtil;
 
     /**
@@ -67,6 +76,27 @@ public class UserServiceImpl implements UserService {
         }
 
         throw exception(USER, DUPLICATE_ENTITY, userDto.getEmail());
+    }
+
+    @Override
+    public JwtResponse login(UserDto userDto) {
+
+        // Control flows to Provider Manager, then, Authentication Provider
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDto.getEmail(), userDto.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtUtil.generateToken(authentication);
+
+        // Convert User object to UserDetails object
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+
+        return new JwtResponse(
+                token,
+                userPrincipal.getId(),
+                userPrincipal.getEmail(),
+                userPrincipal.getFirstName(),
+                userPrincipal.getLastName()
+        );
     }
 
     /**

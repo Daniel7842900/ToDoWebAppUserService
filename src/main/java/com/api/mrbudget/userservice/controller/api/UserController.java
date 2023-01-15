@@ -40,11 +40,6 @@ public class UserController {
 
     @PostMapping("/signup")
     public UserDto signup(@RequestBody SignupRequest signupRequest) {
-//        System.out.println(signupRequest.getFirstName());
-//        System.out.println(signupRequest.getLastName());
-//        System.out.println(signupRequest.getEmail());
-//        System.out.println(signupRequest.getPassword());
-
         // Create a UserDto
         UserDto userDto = new UserDto()
                 .setFirstName(signupRequest.getFirstName())
@@ -57,32 +52,33 @@ public class UserController {
 
     @PostMapping("/login")
     public Response login(@RequestBody LoginRequest loginRequest) {
-//        System.out.println(loginRequest.getEmail());
-//        System.out.println(loginRequest.getPassword());
-//        System.out.println("passing printing email and password");
 
-        // Control flows to Provider Manager, then, Authentication Provider
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
-//        System.out.println(authentication);
-//        System.out.println("passing authentication");
+        UserDto userDto = new UserDto()
+                .setEmail(loginRequest.getEmail())
+                .setPassword(loginRequest.getPassword());
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtil.generateToken(authentication);
+        JwtResponse jwtResponse = userService.login(userDto);
 
-        // Convert User object to UserDetails object
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+//        // Control flows to Provider Manager, then, Authentication Provider
+//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+//
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        String jwt = jwtUtil.generateToken(authentication);
+//
+//        // Convert User object to UserDetails object
+//        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-//        System.out.println(jwt);
-//        System.out.println("passing jwt");
-        return Response.ok().setPayload(
-                new JwtResponse(
-                        jwt,
-                        userPrincipal.getId(),
-                        userPrincipal.getEmail(),
-                        userPrincipal.getFirstName(),
-                        userPrincipal.getLastName()
-                )
-        );
+//        return Response.ok().setPayload(
+//                new JwtResponse(
+//                        jwt,
+//                        userPrincipal.getId(),
+//                        userPrincipal.getEmail(),
+//                        userPrincipal.getFirstName(),
+//                        userPrincipal.getLastName()
+//                )
+//        );
+
+        return Response.ok().setPayload(jwtResponse);
     }
 
 

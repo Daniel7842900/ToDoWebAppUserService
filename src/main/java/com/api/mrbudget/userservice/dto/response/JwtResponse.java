@@ -21,7 +21,6 @@ public class JwtResponse {
     private String email;
     private String firstName;
     private String lastName;
-    //eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NzM2NjY0MzAsImlhdCI6MTY3MzY0ODQzMH0.6YuUQOnRM6zY51OZM2KB53GhEDAkojGOZdtaZ-ysupj7W2RgLemSZ7vZvhg2D6ajOYKpsOURzyGBUzwSYlFkYA
 
     public JwtResponse(String token, Long id, String email, String firstName, String lastName) {
         this.token = token;

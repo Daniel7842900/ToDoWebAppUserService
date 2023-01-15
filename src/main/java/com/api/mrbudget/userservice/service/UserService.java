@@ -1,6 +1,7 @@
 package com.api.mrbudget.userservice.service;
 
 import com.api.mrbudget.userservice.dto.model.UserDto;
+import com.api.mrbudget.userservice.dto.response.JwtResponse;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -20,6 +21,8 @@ public interface UserService  {
     UserDto signup(UserDto userDto);
 
     UserDto findByEmail(String email);
+
+    JwtResponse login(UserDto userDto);
 
 //    String
 }
