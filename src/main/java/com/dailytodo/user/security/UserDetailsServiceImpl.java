@@ -1,11 +1,9 @@
-package com.api.mrbudget.userservice.security;
+package com.dailytodo.user.security;
 
 
-import com.api.mrbudget.userservice.dto.model.UserDto;
-import com.api.mrbudget.userservice.repository.UserRepository;
-import com.api.mrbudget.userservice.service.UserService;
+import com.dailytodo.user.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
-import com.api.mrbudget.userservice.model.User;
+import com.dailytodo.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

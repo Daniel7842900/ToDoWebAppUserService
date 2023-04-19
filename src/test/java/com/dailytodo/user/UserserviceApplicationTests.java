@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice;
+package com.dailytodo.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

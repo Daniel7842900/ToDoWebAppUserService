@@ -1,12 +1,8 @@
 package com.dailytodo.user.dto.mapper;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.NamingConventions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Author: Daniel Lim
@@ -17,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableTransactionManagement
 //@EnableJpaRepositories
 //@EnableJpaAuditing
-public class UserConfiguration {
+public class UserMapperConfig {
 
     /**
      * Configures the mapper (User -> UserDto)

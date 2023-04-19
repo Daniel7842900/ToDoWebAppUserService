@@ -1,20 +1,14 @@
-package com.api.mrbudget.userservice.controller.api;
+package com.dailytodo.user.controller.api;
 
-import com.api.mrbudget.userservice.controller.request.LoginRequest;
-import com.api.mrbudget.userservice.controller.request.SignupRequest;
-import com.api.mrbudget.userservice.dto.model.UserDto;
-import com.api.mrbudget.userservice.dto.response.JwtResponse;
-import com.api.mrbudget.userservice.dto.response.Response;
-import com.api.mrbudget.userservice.model.User;
-import com.api.mrbudget.userservice.security.JwtUtil;
-import com.api.mrbudget.userservice.security.UserDetailsImpl;
-import com.api.mrbudget.userservice.service.UserService;
+import com.dailytodo.user.controller.request.LoginRequest;
+import com.dailytodo.user.controller.request.SignupRequest;
+import com.dailytodo.user.dto.model.UserDto;
+import com.dailytodo.user.dto.response.JwtResponse;
+import com.dailytodo.user.dto.response.Response;
+import com.dailytodo.user.security.JwtUtil;
+import com.dailytodo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 /**

@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.controller.request;
+package com.dailytodo.user.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

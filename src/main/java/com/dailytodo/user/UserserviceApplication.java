@@ -1,8 +1,7 @@
-package com.api.mrbudget.userservice;
+package com.dailytodo.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 public class UserserviceApplication {

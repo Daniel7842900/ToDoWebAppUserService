@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.model;
+package com.dailytodo.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,14 +14,14 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name="user")
+@Table(name="\"User\"")
 @Getter
 @Setter
 @Accessors(chain = true)
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "first_name", length = 20)

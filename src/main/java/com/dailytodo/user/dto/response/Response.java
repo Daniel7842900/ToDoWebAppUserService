@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.dto.response;
+package com.dailytodo.user.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,7 +21,6 @@ import lombok.experimental.Accessors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response<T> {
-
     private Status status;
     private T payload;
 

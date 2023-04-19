@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.dto.model;
+package com.dailytodo.user.dto.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,7 +21,6 @@ import lombok.experimental.Accessors;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class UserDto {
-
     private String firstName;
 
     private String lastName;

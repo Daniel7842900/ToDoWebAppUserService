@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.exception;
+package com.dailytodo.user.exception;
 
 /**
  * Author: Daniel Lim

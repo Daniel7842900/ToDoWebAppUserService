@@ -1,6 +1,6 @@
-package com.api.mrbudget.userservice.exception;
+package com.dailytodo.user.exception;
 
-import com.api.mrbudget.userservice.config.PropertiesConfig;
+import com.dailytodo.user.config.PropertiesConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

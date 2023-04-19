@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.dto.response;
+package com.dailytodo.user.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +14,6 @@ import lombok.experimental.Accessors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JwtResponse {
-
     private String token;
     private Long id;
     private String tokenPrefix = "Bearer";
@@ -25,7 +24,7 @@ public class JwtResponse {
     public JwtResponse(String token, Long id, String email, String firstName, String lastName) {
         this.token = token;
         this.id = id;
-        this.tokenPrefix = tokenPrefix;
+//        this.tokenPrefix = tokenPrefix;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;

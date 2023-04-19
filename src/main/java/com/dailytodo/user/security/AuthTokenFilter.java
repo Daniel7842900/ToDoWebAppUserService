@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.security;
+package com.dailytodo.user.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,9 +31,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-//        System.out.println("request is:");
-//        System.out.println(request);
-
         try {
             // Retrieve a jwt token
             String token = parseJwt(request);

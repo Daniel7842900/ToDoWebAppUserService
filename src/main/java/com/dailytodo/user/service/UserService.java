@@ -1,8 +1,7 @@
-package com.api.mrbudget.userservice.service;
+package com.dailytodo.user.service;
 
-import com.api.mrbudget.userservice.dto.model.UserDto;
-import com.api.mrbudget.userservice.dto.response.JwtResponse;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.dailytodo.user.dto.model.UserDto;
+import com.dailytodo.user.dto.response.JwtResponse;
 
 /**
  * Author: Daniel Lim

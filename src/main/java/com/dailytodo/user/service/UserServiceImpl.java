@@ -1,15 +1,14 @@
-package com.api.mrbudget.userservice.service;
+package com.dailytodo.user.service;
 
-import com.api.mrbudget.userservice.dto.mapper.UserMapper;
-import com.api.mrbudget.userservice.dto.model.UserDto;
-import com.api.mrbudget.userservice.dto.response.JwtResponse;
-import com.api.mrbudget.userservice.exception.UserException;
-import  com.api.mrbudget.userservice.exception.EntityType;
-import  com.api.mrbudget.userservice.exception.ExceptionType;
-import com.api.mrbudget.userservice.model.User;
-import com.api.mrbudget.userservice.repository.UserRepository;
-import com.api.mrbudget.userservice.security.JwtUtil;
-import com.api.mrbudget.userservice.security.UserDetailsImpl;
+import com.dailytodo.user.dto.model.UserDto;
+import com.dailytodo.user.dto.response.JwtResponse;
+import com.dailytodo.user.exception.UserException;
+import com.dailytodo.user.exception.EntityType;
+import com.dailytodo.user.exception.ExceptionType;
+import com.dailytodo.user.model.User;
+import com.dailytodo.user.repository.UserRepository;
+import com.dailytodo.user.security.JwtUtil;
+import com.dailytodo.user.security.UserDetailsImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,10 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static com.api.mrbudget.userservice.exception.EntityType.USER;
-import static com.api.mrbudget.userservice.exception.ExceptionType.DUPLICATE_ENTITY;
-import static com.api.mrbudget.userservice.exception.ExceptionType.ENTITY_NOT_FOUND;
-
 
 /**
  * Author: Daniel Lim
@@ -34,7 +29,6 @@ import static com.api.mrbudget.userservice.exception.ExceptionType.ENTITY_NOT_FO
  */
 @Component
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
 
@@ -72,10 +66,16 @@ public class UserServiceImpl implements UserService {
                     .setEmail(userDto.getEmail())
                     .setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-            return UserMapper.toUserDto(userRepository.save(user));
+            // Save new user
+            userRepository.save(user);
+
+            // Convert user to userDto
+            UserDto newUserDto = modelMapper.map(user, UserDto.class);
+//            return UserMapper.toUserDto(userRepository.save(user));
+            return newUserDto;
         }
 
-        throw exception(USER, DUPLICATE_ENTITY, userDto.getEmail());
+        throw exception(EntityType.USER, ExceptionType.DUPLICATE_ENTITY, userDto.getEmail());
     }
 
     @Override
@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
         // Converts a user object to a userDto object
         if(user.isPresent()) return modelMapper.map(user.get(), UserDto.class);
 
-        throw exception(USER, ENTITY_NOT_FOUND, email);
+        throw exception(EntityType.USER, ExceptionType.ENTITY_NOT_FOUND, email);
     }
 
     private RuntimeException exception(EntityType entityType, ExceptionType exceptionType, String... args) {

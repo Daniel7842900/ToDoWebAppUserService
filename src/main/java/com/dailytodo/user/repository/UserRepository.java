@@ -1,6 +1,6 @@
-package com.api.mrbudget.userservice.repository;
+package com.dailytodo.user.repository;
 
-import com.api.mrbudget.userservice.model.User;
+import com.dailytodo.user.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 

@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.config;
+package com.dailytodo.user.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;

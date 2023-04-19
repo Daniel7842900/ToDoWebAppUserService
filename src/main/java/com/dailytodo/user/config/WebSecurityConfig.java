@@ -1,9 +1,7 @@
-package com.api.mrbudget.userservice.config;
+package com.dailytodo.user.config;
 
-import com.api.mrbudget.userservice.security.AuthTokenFilter;
-import com.api.mrbudget.userservice.security.UserDetailsServiceImpl;
-import com.api.mrbudget.userservice.service.UserService;
-import com.api.mrbudget.userservice.service.UserServiceImpl;
+import com.dailytodo.user.security.AuthTokenFilter;
+import com.dailytodo.user.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
