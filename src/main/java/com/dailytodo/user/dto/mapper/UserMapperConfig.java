@@ -1,4 +1,4 @@
-package com.api.mrbudget.userservice.config;
+package com.dailytodo.user.dto.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.NamingConventions;
@@ -29,8 +29,8 @@ public class UserConfiguration {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
-                .setSourceNamingConvention(NamingConventions.JAVABEANS_MUTATOR);
+                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE);
+//                .setSourceNamingConvention(NamingConventions.JAVABEANS_MUTATOR);
         return modelMapper;
     }
 }
